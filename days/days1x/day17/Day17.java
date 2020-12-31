@@ -6,7 +6,8 @@ import java.util.*;
 
 public class Day17 extends AocDay {
 
-    
+    private final String[][] cells;
+
     /**
      * Prepare/parse the input in preparation for running the parts.
      * @param input the entire problem input as downloaded
@@ -15,6 +16,9 @@ public class Day17 extends AocDay {
     public Day17(String input, PrintStream output) {
         super(input, output);
 
+        cells = Arrays.stream(input.split("\n"))
+                    .map(s -> s.split(""))
+                    .toArray(size -> new String[size][]);
     }
 
     /**
@@ -24,9 +28,16 @@ public class Day17 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part1() {
+        ConwayNSpace cc = new ConwayNSpace(3, cells);
 
-        return "";
+        for (int i = 0; i < 6; i++) {
+            cc.step();
+        }
+
+        // out.println(cc.numActive() + " active cells after 6 cycles.");
+        return "" + cc.numActive();
     }
 
     /**
@@ -36,8 +47,15 @@ public class Day17 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part2() {
+        ConwayNSpace cc = new ConwayNSpace(4, cells);
 
-        return "";
+        for (int i = 0; i < 6; i++) {
+            cc.step();
+        }
+
+        // out.println(cc.numActive() + " active cells after 6 cycles.");
+        return "" + cc.numActive();
     }
 }

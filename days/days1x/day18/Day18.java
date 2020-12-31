@@ -5,8 +5,9 @@ import java.io.*;
 import java.util.*;
 
 public class Day18 extends AocDay {
-
     
+    private final String[] homework;
+
     /**
      * Prepare/parse the input in preparation for running the parts.
      * @param input the entire problem input as downloaded
@@ -15,6 +16,7 @@ public class Day18 extends AocDay {
     public Day18(String input, PrintStream output) {
         super(input, output);
 
+        homework = input.split("\n");
     }
 
     /**
@@ -24,9 +26,16 @@ public class Day18 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part1() {
+        long total = 0;
 
-        return "";
+        // evaluate each problem in the homework and add up the results
+        for (String problem : homework) {
+            total += Expression.eval(problem, false);
+        }
+
+        return "" + total;
     }
 
     /**
@@ -36,8 +45,11 @@ public class Day18 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part2() {
-
-        return "";
+        long total = Arrays.stream(homework)
+                        .mapToLong(problem -> Expression.eval(problem, true))
+                        .reduce(0, (acc, val) -> acc + val);
+        return "" + total;
     }
 }

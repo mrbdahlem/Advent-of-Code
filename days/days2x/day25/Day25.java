@@ -6,7 +6,8 @@ import java.util.*;
 
 public class Day25 extends AocDay {
 
-    
+    private final long[] data;
+
     /**
      * Prepare/parse the input in preparation for running the parts.
      * @param input the entire problem input as downloaded
@@ -15,6 +16,9 @@ public class Day25 extends AocDay {
     public Day25(String input, PrintStream output) {
         super(input, output);
 
+        data = Arrays.stream((input).split("\n"))
+                        .mapToLong(Long::parseLong)
+                        .toArray();
     }
 
     /**
@@ -24,9 +28,16 @@ public class Day25 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part1() {
+        Encryptor key = new Encryptor(data[0]);
+        Encryptor door = new Encryptor(data[1]);
 
-        return "";
+        long keyKey = key.getKey(door.getLoopSize());
+        // long doorKey = door.getKey(key.getLoopSize());
+
+        // out.println(keyKey + ": " + (keyKey == doorKey));
+        return "" + keyKey;
     }
 
     /**
@@ -36,6 +47,7 @@ public class Day25 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part2() {
 
         return "";

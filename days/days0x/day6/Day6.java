@@ -5,8 +5,9 @@ import java.io.*;
 import java.util.*;
 
 public class Day6 extends AocDay {
-
     
+    private final String[] allAnswers;
+
     /**
      * Prepare/parse the input in preparation for running the parts.
      * @param input the entire problem input as downloaded
@@ -15,6 +16,7 @@ public class Day6 extends AocDay {
     public Day6(String input, PrintStream output) {
         super(input, output);
 
+        allAnswers = input.split("\n");
     }
 
     /**
@@ -24,9 +26,29 @@ public class Day6 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part1() {
 
-        return "";
+        List<Set<String>> groupAnswers = new ArrayList<>();
+        Set<String> group = new HashSet<>();
+        groupAnswers.add(group);
+        for (String answers : allAnswers) {
+            if (answers.isBlank()) {
+                group = new HashSet<>();
+                groupAnswers.add(group);
+            }
+            else {
+                for (String answer : answers.split("")) {
+                    group.add(answer);
+                }
+            }
+        }
+
+        int count = groupAnswers.stream()
+                    .mapToInt(a->a.size())
+                    .reduce(0, (a,b)->a + b);
+
+        return "" + count;
     }
 
     /**
@@ -36,8 +58,40 @@ public class Day6 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part2() {
 
-        return "";
+        List<Set<String>> groupAnswers = new ArrayList<>();
+
+        Set<String> group = new HashSet<>();
+        groupAnswers.add(group);
+        boolean firstPerson = true;
+        for (String answers : allAnswers) {
+            if (answers.isBlank()) {
+                group = new HashSet<>();
+                groupAnswers.add(group);
+                firstPerson = true;
+            }
+            else {
+                Set<String> person = new HashSet<>();
+                for (String answer : answers.split("")) {
+                    person.add(answer);
+                }
+                if (firstPerson) {
+                    group.addAll(person);
+                }
+                else {
+                    group.retainAll(person);
+                }
+                firstPerson = false;
+            }
+        }
+
+
+        int count = groupAnswers.stream()
+                    .mapToInt(a->a.size())
+                    .reduce(0, (a,b)->a + b);
+
+        return "" + count;
     }
 }

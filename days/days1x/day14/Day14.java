@@ -5,8 +5,8 @@ import java.io.*;
 import java.util.*;
 
 public class Day14 extends AocDay {
+    private String[] pgm;
 
-    
     /**
      * Prepare/parse the input in preparation for running the parts.
      * @param input the entire problem input as downloaded
@@ -14,7 +14,8 @@ public class Day14 extends AocDay {
      */
     public Day14(String input, PrintStream output) {
         super(input, output);
-
+        
+        pgm = input.split("\n");
     }
 
     /**
@@ -24,9 +25,27 @@ public class Day14 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part1() {
+        Memory mem = new Memory();  
 
-        return "";
+        for (String cmd : pgm) {
+            String[] parts = cmd.split("=");
+            cmd = parts[0].trim();
+            String data = parts[1].trim();
+
+            if (cmd.startsWith("mem")) {
+                int addr = Integer.parseInt(cmd.substring(cmd.indexOf('[') + 1,
+                                                          cmd.indexOf(']')));
+                mem.set(addr, Long.parseLong(data));
+            }
+            else if (cmd.startsWith("mask")) {
+                mem.setMask(data);
+            }
+        }
+
+        // System.out.println("Memory sum: " + mem.sumMemory());
+        return "" + mem.sumMemory();
     }
 
     /**
@@ -36,8 +55,26 @@ public class Day14 extends AocDay {
      *
      * @return the solution for the day's challenge.
      */
+    @Override
     public String part2() {
+        Memory2 mem = new Memory2();
 
-        return "";
+        for (String cmd : pgm) {
+            String[] parts = cmd.split("=");
+            cmd = parts[0].trim();
+            String data = parts[1].trim();
+
+            if (cmd.startsWith("mem")) {
+                long addr = Long.parseLong(cmd.substring(cmd.indexOf('[') + 1,
+                                                         cmd.indexOf(']')));
+                mem.set(addr, Long.parseLong(data));
+            }
+            else if (cmd.startsWith("mask")) {
+                mem.setMask(data);
+            }
+        }
+
+        // System.out.println("Memory sum: " + mem.sumMemory());
+        return "" + mem.sumMemory();
     }
 }
