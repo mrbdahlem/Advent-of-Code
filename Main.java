@@ -250,11 +250,12 @@ class Main {
             throw new RuntimeException("Need to set SESSION cookie in .env file."); 
         }
 
-        
-        
         String data = ""; // The downloaded file data
 
         try {
+            // Create parent directories as necessary for input file
+            inputFile.getParentFile().mkdirs();
+
             System.out.println("Downloading input data for " + year + 
                                 " day " + day);
             URL url = new URL("https://adventofcode.com/" + year + 
@@ -350,6 +351,8 @@ class Main {
         if (unique) {
             // If the data is a new response
             try {
+                // make sure the result file parent directory exists
+                new File(filename).getParentFile().mkdirs();
                 // add the data to the end of the file
                 Files.write(
                     Paths.get(filename),
