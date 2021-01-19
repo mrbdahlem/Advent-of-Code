@@ -19,8 +19,9 @@ javac @$TEMPDIR/sources.txt -d $TEMPDIR/build
 echo packaging...
 
 jar -cfe $TEMPDIR/AoC.jar Main -C $TEMPDIR/build .
+rm -rf $TEMPDIR/build
 
 echo running...
 
 # run the packaged greenfoot project
-java -jar $TEMPDIR/AoC.jar -cp $TEMPDIR/build
+java -jar $TEMPDIR/AoC.jar
