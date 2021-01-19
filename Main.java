@@ -10,9 +10,9 @@ import java.net.*;
 
 class Main {
 
-    public static int YEAR = 2021;
-    private static boolean RUN_TODAY_ONLY = false;
-    private static boolean DISPLAY_OUTPUT = false;
+    private static final int YEAR = 2021;
+    private static boolean RUN_TODAY_ONLY = true;
+    private static boolean DISPLAY_OUTPUT = true;
     private static String SAMPLE_INPUT_FILENAME = "";
 
     private static double NS_TO_MS = 1/1_000_000D;
@@ -105,7 +105,7 @@ class Main {
                 SAMPLE_INPUT_FILENAME != null &&
                 !SAMPLE_INPUT_FILENAME.isEmpty()) {
             try{
-                input = fileContents("input/sample/" + SAMPLE_INPUT_FILENAME);
+                input = fileContents("input/" + YEAR + "/sample/" + SAMPLE_INPUT_FILENAME);
             }
             catch (IOException e) {
                 System.err.println(e.getLocalizedMessage());
