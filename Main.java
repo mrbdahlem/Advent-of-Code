@@ -12,6 +12,7 @@ class Main {
 
     private static final int YEAR = 2021;
     private static boolean RUN_TODAY_ONLY = true;
+    private static boolean RUN_DAY = LocalDate.now().getDayOfMonth();
     private static boolean DISPLAY_OUTPUT = true;
     private static String SAMPLE_INPUT_FILENAME = "";
 
@@ -26,7 +27,7 @@ class Main {
         int maxDay;
 
         LocalDate now = LocalDate.now();
-        int day = now.getDayOfMonth();
+        int day = RUN_DAY;
 
         // If the competition is ongoing
         if (now.getYear() == YEAR && now.getMonthValue() == 12) {
