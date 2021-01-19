@@ -219,7 +219,7 @@ class Main {
         
         // If there is no filename provided, use a default
         if (filename == null || filename.isEmpty()) {
-            filename = String.format("input/daily/day%02d.txt", day);
+            filename = String.format("input/" + year + "/day%02d.txt", day);
             download = true;
         }
 
