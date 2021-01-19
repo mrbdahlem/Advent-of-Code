@@ -10,7 +10,7 @@ import java.net.*;
 
 class Main {
 
-    public static int YEAR = 2021;
+    public static int YEAR = 2020;
     private static boolean RUN_TODAY_ONLY = false;
     private static boolean DISPLAY_OUTPUT = false;
     private static String SAMPLE_INPUT_FILENAME = "";
