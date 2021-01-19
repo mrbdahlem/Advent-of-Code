@@ -2,7 +2,7 @@
 This is a template to aid in solving Advent of Code puzzles on repl.it.
 
 ## To Use
-Create a new repl.it project and clone this repo into it.
+Create a new repl.it project and clone this repo into it. It would be a good idea to create a branch for the current year.
 
 Look at the ```Main.java``` file. In this file, you will need to change the ```YEAR``` to be the year you are working on. If ```RUN_TODAY_ONLY```` is true,
 then the day specified by ```RUN_DAY``` will be the only day that will be run. ```RUN_DAY``` should be a number from 1-25, or the automatically generated
