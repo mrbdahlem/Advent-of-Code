@@ -10,7 +10,7 @@ import java.net.*;
 
 class Main {
 
-    public static int YEAR = 2020;
+    public static int YEAR = 2021;
     private static boolean RUN_TODAY_ONLY = false;
     private static boolean DISPLAY_OUTPUT = false;
     private static String SAMPLE_INPUT_FILENAME = "";
@@ -219,7 +219,7 @@ class Main {
         
         // If there is no filename provided, use a default
         if (filename == null || filename.isEmpty()) {
-            filename = String.format("input/daily/day%02d.txt", day);
+            filename = String.format("input/" + year + "/day%02d.txt", day);
             download = true;
         }
 
