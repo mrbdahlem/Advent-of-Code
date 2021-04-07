@@ -8,7 +8,7 @@ Look at the `Main.java` file. In this file, you will need to change the `YEAR` t
 
 During the competition, you will want to modify the class for each day in the `days` folder. Each day of the advent calendar has its own subfolder to allow easier use of helper classes.
 
-In order to download the input files, you will need to create a file named `.env` in the same folder as ```Main.java`. This file will have one line as below:
+In order to download the input files, you will need to create a file named `.env` in the same folder as `Main.java`. This file will have one line as below:
 
 `
 SESSION=XXXXXXXXXXXXXXXXX
